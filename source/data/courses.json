@@ -2,7 +2,7 @@
     "metadata": {
         "lastUpdated": "2026-07-21T21:00:00Z",
         "version": "1.1.0",
-        "//": "Players are stored as an array of arrays. The last two elements of each player array are to represent the player's current Yellow and Red cards respectively ('0' if none).",
+        "//": "Courses are stored as an array of objects. Each course object contains the course's ID, title, number of weeks, number of spaces available, price, and URL for booking.",
         "fields": {
             "course": {
                 "id": "string",
