@@ -19,17 +19,6 @@
   },
   "courses": [
     {
-      "id": "023",
-      "title": "Evening Crochet Course",
-      "weeks": 6,
-      "course_type": "crochet",
-      "full_course_spaces": 2,
-      "full_course_price": "30.00",
-      "single_session_spaces": 0,
-      "single_session_price": "0.00",
-      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-se90m-20260608183000"
-    },
-    {
       "id": "016",
       "title": "Painting Course",
       "weeks": 6,
@@ -39,6 +28,17 @@
       "single_session_spaces": 0,
       "single_session_price": "32.50",
       "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sx4sd-20260609183000"
+    },
+    {
+      "id": "023",
+      "title": "Evening Crochet Course",
+      "weeks": 6,
+      "course_type": "crochet",
+      "full_course_spaces": 2,
+      "full_course_price": "30.00",
+      "single_session_spaces": 0,
+      "single_session_price": "0.00",
+      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-se90m-20260608183000"
     },
     {
       "id": "018",
