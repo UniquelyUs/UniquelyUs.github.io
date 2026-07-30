@@ -1,0 +1,27 @@
+{
+    "metadata": {
+        "lastUpdated": "2026-07-21T21:00:00Z",
+        "version": "1.1.0",
+        "//": "Players are stored as an array of arrays. The last two elements of each player array are to represent the player's current Yellow and Red cards respectively ('0' if none).",
+        "fields": {
+            "course": {
+                "id": "string",
+                "title": "string",
+                "weeks": "number",
+                "spaces": "number",
+                "price": "string",
+                "url": "string"
+            }
+        }
+    },
+    "courses": [
+        {
+            "id": "015",
+            "title": "Evening Crochet Course",
+            "weeks": 6,
+            "spaces": 0,
+            "price": "25.00",
+            "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-se90m-20260608183000"
+        }
+    ]
+}
