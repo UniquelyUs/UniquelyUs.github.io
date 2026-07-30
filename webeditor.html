@@ -3703,7 +3703,7 @@
                     method: "POST",
                     headers,
                     body: JSON.stringify({
-                        siteId: String(notificationConfig.siteId || "fm"),
+                        siteId: String(notificationConfig.siteId || "uu"), // default to "uu" for UniquelyUs
                         repo: WEBEDITOR_CONFIG.repository.targetRepoFullName,
                         path: state.currentJsonPath,
                         commitSha: commitSha || "",
