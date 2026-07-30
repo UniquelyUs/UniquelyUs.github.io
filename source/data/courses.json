@@ -7,6 +7,7 @@
             "course": {
                 "id": "string",
                 "title": "string",
+                "description": "string",
                 "weeks": "number",
                 "course_type": "string",
                 "full_course_spaces": "number",
@@ -21,6 +22,7 @@
         {
             "id": "015",
             "title": "Evening Crochet Course",
+            "description": "Course description goes here.",
             "weeks": 6,
             "course_type": "crochet",
             "full_course_spaces": 0,
@@ -32,6 +34,7 @@
         {
             "id": "016", 
             "title": "Painting Course", 
+            "description": "Course description goes here.",
             "weeks": 6, 
             "course_type": "painting",
             "full_course_spaces": 0, 
@@ -43,6 +46,7 @@
         {
             "id": "018", 
             "title": "Craft Course", 
+            "description": "Course description goes here.",
             "weeks": 6, 
             "course_type": "craft",
             "full_course_spaces": 8, 
