@@ -1,0 +1,12 @@
+{
+    "site_data": {
+        "title": "Uniquely Us",
+        "url": "https://uniquelyus.co.uk/"
+    }, 
+    "metadata": {
+        "last_updated": null
+    }, 
+    "json_files": {
+        "courses": "source/data/courses.json"
+    }
+}
