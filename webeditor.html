@@ -3355,7 +3355,7 @@
                 state.crmModel.records.forEach(function(_record, idx) {
                     const option = document.createElement("option");
                     option.value = String(idx);
-                    option.textContent = "Record " + (idx + 1);
+                    option.textContent = "Record " + (idx + 1) + ` ${_record.id}`;
                     if (idx === state.crmModel.selectedIndex) {
                         option.selected = true;
                     }
