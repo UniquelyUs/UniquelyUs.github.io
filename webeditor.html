@@ -2369,7 +2369,7 @@
                     return false;
                 }
 
-                const definitionKeys = [
+                const strongDefinitionKeys = [
                     "type",
                     "default",
                     "field_type",
@@ -2377,16 +2377,22 @@
                     "value_type",
                     "required",
                     "optional",
-                    "description",
                     "label",
                     "hint",
                     "options",
                     "enum"
                 ];
 
-                return definitionKeys.some(function(key) {
+                if (strongDefinitionKeys.some(function(key) {
                     return Object.prototype.hasOwnProperty.call(definition, key);
-                });
+                })) {
+                    return true;
+                }
+
+                return Object.prototype.hasOwnProperty.call(definition, "description")
+                    && Object.keys(definition).some(function(key) {
+                        return ["type", "default", "field_type", "node_type", "value_type", "required", "optional", "label", "hint", "options", "enum"].includes(key);
+                    });
             }
 
             function isFieldMapCandidate(value) {
@@ -2405,6 +2411,37 @@
                 });
             }
 
+            function normalizeFieldMap(fieldMap) {
+                if (!fieldMap || typeof fieldMap !== "object" || Array.isArray(fieldMap)) {
+                    return {};
+                }
+
+                const directFields = {};
+                Object.entries(fieldMap).forEach(function(entry) {
+                    const key = entry[0];
+                    const value = entry[1];
+                    if (typeof value === "string" || isFieldDefinitionObject(value)) {
+                        directFields[key] = value;
+                    }
+                });
+
+                if (Object.keys(directFields).length) {
+                    return directFields;
+                }
+
+                const singleGroupEntry = Object.entries(fieldMap).find(function(entry) {
+                    const value = entry[1];
+                    return value && typeof value === "object" && !Array.isArray(value);
+                });
+
+                if (!singleGroupEntry) {
+                    return {};
+                }
+
+                const nestedCandidate = normalizeFieldMap(singleGroupEntry[1]);
+                return nestedCandidate && typeof nestedCandidate === "object" ? nestedCandidate : {};
+            }
+
             function resolveActiveFieldGroup(fieldCatalog, dataKey) {
                 if (!fieldCatalog || typeof fieldCatalog !== "object" || Array.isArray(fieldCatalog)) {
                     return {
@@ -2413,17 +2450,18 @@
                     };
                 }
 
-                if (isFieldMapCandidate(fieldCatalog)) {
+                const normalizedCatalog = normalizeFieldMap(fieldCatalog);
+                if (Object.keys(normalizedCatalog).length) {
                     return {
                         groupName: "",
-                        activeFields: fieldCatalog
+                        activeFields: normalizedCatalog
                     };
                 }
 
                 if (fieldCatalog[dataKey] && isFieldMapCandidate(fieldCatalog[dataKey])) {
                     return {
                         groupName: dataKey,
-                        activeFields: fieldCatalog[dataKey]
+                        activeFields: normalizeFieldMap(fieldCatalog[dataKey])
                     };
                 }
 
@@ -2431,7 +2469,7 @@
                 if (singular && fieldCatalog[singular] && isFieldMapCandidate(fieldCatalog[singular])) {
                     return {
                         groupName: singular,
-                        activeFields: fieldCatalog[singular]
+                        activeFields: normalizeFieldMap(fieldCatalog[singular])
                     };
                 }
 
@@ -2441,7 +2479,7 @@
                 if (firstKey) {
                     return {
                         groupName: firstKey,
-                        activeFields: fieldCatalog[firstKey]
+                        activeFields: normalizeFieldMap(fieldCatalog[firstKey])
                     };
                 }
 
@@ -2453,7 +2491,8 @@
 
             function buildRecordFromFields(fieldMap) {
                 const record = {};
-                Object.entries(fieldMap || {}).forEach(function(entry) {
+                const normalizedFieldMap = normalizeFieldMap(fieldMap);
+                Object.entries(normalizedFieldMap).forEach(function(entry) {
                     const key = entry[0];
                     const config = entry[1];
                     if (config && typeof config === "object" && !Array.isArray(config) && Object.prototype.hasOwnProperty.call(config, "default")) {
