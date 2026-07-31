@@ -866,11 +866,8 @@
                     <h1 id="brandTitle">Site WebEditor</h1>
                     <p id="brandTagline">Repository-locked JSON editor</p>
                 </div>
-                <nav>
-                    <a class="nav-link" href="#home" data-route="home">Home</a>
-                    <a class="nav-link" href="#editor" data-route="editor">Editor</a>
-                    <a class="nav-link" href="#about" data-route="about">About</a>
-                    <a class="nav-link" href="#licence" data-route="licence">Licence</a>
+                <nav aria-label="Editor context">
+                    <span class="pill">CRM editor</span>
                 </nav>
             </header>
 
@@ -991,16 +988,12 @@
 
                             <section class="wizard-panel">
                                 <h2>Stage 4: Edit and Commit</h2>
-                                <div class="row">
-                                    <div class="mode-switch" role="tablist" aria-label="editor mode switch">
-                                        <button id="modeDndBtn" class="active">Drag & Drop</button>
-                                        <button id="modeCrmBtn">CRM View</button>
-                                        <button id="modeTextBtn">Text</button>
-                                    </div>
+                                <div class="row" style="margin-bottom:0.7rem;">
+                                    <span class="pill">CRM editing mode</span>
                                     <span class="pill mono" id="currentFilePill">No file loaded</span>
                                 </div>
 
-                                <div id="dndMode" style="margin-top:0.8rem;">
+                                <div id="dndMode" class="hidden" style="margin-top:0.8rem;">
                                     <div class="drop-zone" id="dropZone">Drop a .json file here to load it into the editor</div>
                                     <div class="node-builder" id="nodeBuilderPanel">
                                         <label>JSON object node editor (drag to reorder siblings)</label>
@@ -1013,7 +1006,7 @@
                                     </div>
                                 </div>
 
-                                <div id="crmMode" class="hidden" style="margin-top:0.8rem;">
+                                <div id="crmMode" style="margin-top:0.8rem;">
                                     <p>CRM mode expects either an object or an array of objects.</p>
                                     <p style="color: var(--muted);">For drag-and-drop reordering, the root JSON must be an array of objects.</p>
                                     <div class="row" style="margin-bottom:0.7rem;">
@@ -1784,12 +1777,16 @@
             }
 
             function route() {
-                const routeId = (location.hash || "#home").replace("#", "");
+                const targetRoute = "editor";
+                if (!location.hash || location.hash !== "#" + targetRoute) {
+                    history.replaceState(null, "", "#" + targetRoute);
+                }
+
                 for (const page of el.pages) {
-                    page.classList.toggle("active", page.id === routeId);
+                    page.classList.toggle("active", page.id === targetRoute);
                 }
                 for (const link of el.navLinks) {
-                    link.classList.toggle("active", link.dataset.route === routeId);
+                    link.classList.toggle("active", link.dataset.route === targetRoute);
                 }
             }
 
@@ -2199,20 +2196,34 @@
             }
 
             function switchEditorMode(mode) {
-                const isDnd = mode === "dnd";
                 const isCrm = mode === "crm";
-                const isText = mode === "text";
 
-                el.dndMode.classList.toggle("hidden", !isDnd);
-                el.crmMode.classList.toggle("hidden", !isCrm);
-                el.textMode.classList.toggle("hidden", !isText);
+                if (el.dndMode) {
+                    el.dndMode.classList.toggle("hidden", true);
+                }
+                if (el.crmMode) {
+                    el.crmMode.classList.toggle("hidden", !isCrm);
+                }
+                if (el.textMode) {
+                    el.textMode.classList.toggle("hidden", true);
+                }
 
-                el.modeDndBtn.classList.toggle("active", isDnd);
-                el.modeCrmBtn.classList.toggle("active", isCrm);
-                el.modeTextBtn.classList.toggle("active", isText);
+                if (el.modeDndBtn) {
+                    el.modeDndBtn.classList.toggle("active", false);
+                }
+                if (el.modeCrmBtn) {
+                    el.modeCrmBtn.classList.toggle("active", isCrm);
+                }
+                if (el.modeTextBtn) {
+                    el.modeTextBtn.classList.toggle("active", false);
+                }
 
-                if (isDnd) {
-                    renderNodeBuilder();
+                if (isCrm) {
+                    if (state.currentJsonData) {
+                        hydrateCrmFromCurrentJson();
+                    } else if (el.jsonTextArea && el.jsonTextArea.value) {
+                        hydrateCrmFromTextarea();
+                    }
                 }
             }
 
@@ -3999,11 +4010,7 @@
 
             function wireUiEvents() {
                 window.addEventListener("hashchange", route);
-                if (!location.hash) {
-                    location.hash = "#home";
-                } else {
-                    route();
-                }
+                route();
 
                 el.yearNow.textContent = String(new Date().getFullYear());
 
@@ -4089,24 +4096,30 @@
                     }
                 });
 
-                el.modeDndBtn.addEventListener("click", function() {
-                    switchEditorMode("dnd");
-                });
+                if (el.modeDndBtn) {
+                    el.modeDndBtn.addEventListener("click", function() {
+                        switchEditorMode("dnd");
+                    });
+                }
 
-                el.modeCrmBtn.addEventListener("click", function() {
-                    switchEditorMode("crm");
-                    if (hydrateCrmFromTextarea()) {
-                        if (state.crmModel.rootMode === "array") {
-                            setStatus(el.editorStatus, "CRM loaded. Use drag-and-drop below to reorder top-level objects.", "ok");
-                        } else {
-                            setStatus(el.editorStatus, "CRM loaded for object editing.", "ok");
+                if (el.modeCrmBtn) {
+                    el.modeCrmBtn.addEventListener("click", function() {
+                        switchEditorMode("crm");
+                        if (hydrateCrmFromTextarea()) {
+                            if (state.crmModel.rootMode === "array") {
+                                setStatus(el.editorStatus, "CRM loaded. Use drag-and-drop below to reorder top-level objects.", "ok");
+                            } else {
+                                setStatus(el.editorStatus, "CRM loaded for object editing.", "ok");
+                            }
                         }
-                    }
-                });
+                    });
+                }
 
-                el.modeTextBtn.addEventListener("click", function() {
-                    switchEditorMode("text");
-                });
+                if (el.modeTextBtn) {
+                    el.modeTextBtn.addEventListener("click", function() {
+                        switchEditorMode("text");
+                    });
+                }
 
                 el.formatJsonBtn.addEventListener("click", function() {
                     try {
@@ -4276,7 +4289,7 @@
                 applyBranding();
                 wireUiEvents();
                 route();
-                switchEditorMode("dnd");
+                switchEditorMode("crm");
                 setEditorStep(0);
                 renderNodeBuilder();
                 if (state.authSession && isStoredSessionExpired()) {
