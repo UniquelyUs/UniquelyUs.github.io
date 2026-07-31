@@ -3352,10 +3352,10 @@
                     return;
                 }
 
-                state.crmModel.records.forEach(function(_record, idx) {
+                state.crmModel.records.forEach(function(record, idx) {
                     const option = document.createElement("option");
                     option.value = String(idx);
-                    option.textContent = "Record " + (idx + 1);
+                    option.textContent = getRecordLabel(record, idx);
                     if (idx === state.crmModel.selectedIndex) {
                         option.selected = true;
                     }
@@ -3370,16 +3370,17 @@
                     return "Record " + (index + 1);
                 }
 
-                const candidateKeys = ["title", "name", "id", "slug", "label"];
+                const candidateKeys = ["id", "title", "name", "slug", "label"];
                 for (const key of candidateKeys) {
-                    if (record[key]) {
-                        return "Record " + (index + 1) + ": " + String(record[key]);
+                    const value = record[key];
+                    if (value !== undefined && value !== null && value !== "") {
+                        return String(value);
                     }
                 }
 
                 const keys = Object.keys(record);
                 if (keys.length) {
-                    return "Record " + (index + 1) + record.id + ": " + keys.slice(0, 2).join(" / ");
+                    return keys.slice(0, 2).join(" / ");
                 }
 
                 return "Record " + (index + 1);
