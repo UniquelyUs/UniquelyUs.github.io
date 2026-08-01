@@ -20,52 +20,52 @@
   },
   "courses": [
     {
-      "id": "016",
-      "title": "Painting Course",
-      "description": "Course description here.",
-      "weeks": 6,
-      "course_type": "painting",
-      "full_course_spaces": 0,
-      "full_course_price": "32.50",
-      "single_session_spaces": 0,
-      "single_session_price": "32.50",
-      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sx4sd-20260609183000"
-    },
-    {
-      "id": "018",
-      "title": "Craft Course",
-      "description": "Course description here.",
+      "id": "022",
+      "title": "6wk Craft Course",
+      "description": "you will try different crafts & learn new skills. The list of what's on the course is on the booking form.",
       "weeks": 6,
       "course_type": "craft",
-      "full_course_spaces": 8,
+      "full_course_spaces": 6,
       "full_course_price": "32.50",
-      "single_session_spaces": 2,
-      "single_session_price": "32.50",
-      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-s8ihp-20260617183000"
+      "single_session_spaces": 6,
+      "single_session_price": "7.50",
+      "url": "https://uniquelyuswalkden.bookwhen.com/schedules/egfyb0cla94i"
     },
     {
       "id": "023",
-      "title": "Evening Crochet Course",
-      "description": "Course description here.",
+      "title": "6wk Crochet course",
+      "description": "this crochet course is for beginners or if you need help understanding patterns etc.",
       "weeks": 6,
       "course_type": "crochet",
       "full_course_spaces": 2,
       "full_course_price": "30.00",
       "single_session_spaces": 0,
       "single_session_price": "0.00",
+      "url": "https://uniquelyuswalkden.bookwhen.com/schedules/egfyb0cla94i"
+    },
+    {
+      "id": "021",
+      "title": "Make a Terrarium",
+      "description": "learn how to make your very own living Terrarium and how to take care of it.",
+      "weeks": 6,
+      "course_type": "one-off",
+      "full_course_spaces": 8,
+      "full_course_price": "35.00",
+      "single_session_spaces": 0,
+      "single_session_price": "0.00",
       "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-se90m-20260608183000"
     },
     {
-      "id": "999",
-      "title": "Test One-Off Class",
-      "description": "Test class description.",
+      "id": "024",
+      "title": "Painting on Vinyl Records",
+      "description": "Try your hand at creating works of art on vinyl.  This will be a unique experience.",
       "weeks": 0,
       "course_type": "one-off",
-      "full_course_spaces": 0,
-      "full_course_price": "0.00",
-      "single_session_spaces": 6,
-      "single_session_price": "7.50",
-      "url": "#"
+      "full_course_spaces": 11,
+      "full_course_price": "15.00",
+      "single_session_spaces": 0,
+      "single_session_price": "0.00",
+      "url": "https://uniquelyuswalkden.bookwhen.com/schedules/egfyb0cla94i"
     }
   ]
 }
