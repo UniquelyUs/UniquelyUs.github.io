@@ -49,10 +49,10 @@
       "description": "learn how to make your very own living Terrarium and how to take care of it.",
       "weeks": 6,
       "course_type": "one-off",
-      "full_course_spaces": 8,
-      "full_course_price": "35.00",
-      "single_session_spaces": 0,
-      "single_session_price": "0.00",
+      "full_course_spaces": 0,
+      "full_course_price": "0",
+      "single_session_spaces": 8,
+      "single_session_price": "35.00",
       "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-se90m-20260608183000"
     },
     {
@@ -61,10 +61,10 @@
       "description": "Try your hand at creating works of art on vinyl.  This will be a unique experience.",
       "weeks": 0,
       "course_type": "one-off",
-      "full_course_spaces": 11,
-      "full_course_price": "15.00",
-      "single_session_spaces": 0,
-      "single_session_price": "0.00",
+      "full_course_spaces": 0,
+      "full_course_price": "0.00",
+      "single_session_spaces": 11,
+      "single_session_price": "15.00",
       "url": "https://uniquelyuswalkden.bookwhen.com/schedules/egfyb0cla94i"
     }
   ]
