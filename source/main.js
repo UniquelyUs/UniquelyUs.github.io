@@ -1,5 +1,36 @@
 const courseDataUrl = "https://uniquely-us.co.uk/source/data/courses.json";
 const SHOW_BIRTHDAY_ANNIVERSARY_ANIMATION = true;
+const GA_MEASUREMENT_ID = 'G-8K8GSEZGLV';
+
+function trackAnalyticsEvent(eventName, params = {}) {
+    if (typeof window.gtag !== 'function') return;
+
+    window.gtag('event', eventName, {
+        ...params,
+        page_title: document.title,
+        page_location: window.location.href
+    });
+}
+
+function trackPageView(pageId = '') {
+    if (typeof window.gtag !== 'function') return;
+
+    const pageName = pageId || (window.location.hash ? window.location.hash.slice(1) : 'home') || 'home';
+    const pagePath = `${window.location.pathname}${window.location.hash || ''}`;
+
+    window.gtag('config', GA_MEASUREMENT_ID, {
+        page_path: pagePath,
+        page_title: document.title,
+        page_location: window.location.href
+    });
+
+    window.gtag('event', 'page_view', {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_path: pagePath,
+        page_name: pageName
+    });
+}
 
 function initBirthdayCelebration() {
     if (!SHOW_BIRTHDAY_ANNIVERSARY_ANIMATION) return;
@@ -71,6 +102,7 @@ class Router {
 
         this.renderPage(pageId);
         this.updateNavigation(hash);
+        trackPageView(pageId);
     }
 
     renderPage(pageId) {
@@ -106,6 +138,24 @@ class Router {
     async loadCourses() {
         const coursesGrid = document.getElementById('courses-grid');
         if (!coursesGrid) return;
+
+        if (!coursesGrid.dataset.analyticsBound) {
+            coursesGrid.addEventListener('click', (event) => {
+                const button = event.target.closest('.enroll-btn');
+                if (!button) return;
+
+                const courseCard = button.closest('.course-card');
+                const courseTitle = courseCard?.querySelector('h3')?.textContent.trim() || 'Unknown course';
+                const buttonLabel = button.textContent.trim();
+
+                trackAnalyticsEvent('course_cta_click', {
+                    action: buttonLabel,
+                    course_title: courseTitle,
+                    page_name: 'courses'
+                });
+            });
+            coursesGrid.dataset.analyticsBound = 'true';
+        }
 
         const getIconClass = (title) => 'fa-solid fa-hashtag';
 
@@ -204,15 +254,39 @@ document.addEventListener('DOMContentLoaded', () => {
         toggle.addEventListener('click', () => {
             const isOpen = nav.classList.toggle('open');
             toggle.setAttribute('aria-expanded', String(isOpen));
+            trackAnalyticsEvent('mobile_nav_toggle', {
+                state: isOpen ? 'opened' : 'closed',
+                page_name: 'home'
+            });
         });
 
         nav.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('open');
                 toggle.setAttribute('aria-expanded', 'false');
+
+                const targetPage = (link.getAttribute('href') || '').replace('#', '') || 'home';
+                trackAnalyticsEvent('navigation_click', {
+                    link_text: link.textContent.trim(),
+                    page_name: targetPage
+                });
             });
         });
     }
+
+    const heroCta = document.querySelector('.hero .cta-button');
+    heroCta?.addEventListener('click', () => {
+        trackAnalyticsEvent('hero_cta_click', {
+            page_name: 'home'
+        });
+    });
+
+    const contactForm = document.getElementById('contact-form');
+    contactForm?.addEventListener('submit', () => {
+        trackAnalyticsEvent('contact_form_submit', {
+            page_name: 'contact'
+        });
+    });
 });
 
 
@@ -293,6 +367,9 @@ Router.prototype.loadGallery = function () {
         const loadMoreButton = document.getElementById('load-more-gallery');
         loadMoreButton.addEventListener('click', () => {
             appendGalleryBatch(grid, loadMoreButton);
+            trackAnalyticsEvent('gallery_load_more_click', {
+                page_name: 'gallery'
+            });
         });
 
         if (!document.getElementById('gallery-modal')) {
@@ -317,8 +394,16 @@ Router.prototype.loadGallery = function () {
             grid.addEventListener('click', (e) => {
                 const img = e.target.closest('img');
                 if (!img) return;
+
                 const modal = document.getElementById('gallery-modal');
                 const modalImg = document.getElementById('gallery-modal-img');
+                const imageName = (img.getAttribute('src') || '').split('/').pop();
+
+                trackAnalyticsEvent('gallery_image_open', {
+                    image_name: imageName,
+                    page_name: 'gallery'
+                });
+
                 modalImg.src = img.dataset.src || img.src;
                 modal.classList.add('open');
             });
