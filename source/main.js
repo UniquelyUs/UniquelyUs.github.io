@@ -1,36 +1,5 @@
 const courseDataUrl = "https://uniquely-us.co.uk/source/data/courses.json";
 const SHOW_BIRTHDAY_ANNIVERSARY_ANIMATION = true;
-const GA_MEASUREMENT_ID = 'G-8K8GSEZGLV';
-
-function trackAnalyticsEvent(eventName, params = {}) {
-    if (typeof window.gtag !== 'function') return;
-
-    window.gtag('event', eventName, {
-        ...params,
-        page_title: document.title,
-        page_location: window.location.href
-    });
-}
-
-function trackPageView(pageId = '') {
-    if (typeof window.gtag !== 'function') return;
-
-    const pageName = pageId || (window.location.hash ? window.location.hash.slice(1) : 'home') || 'home';
-    const pagePath = `${window.location.pathname}${window.location.hash || ''}`;
-
-    window.gtag('config', GA_MEASUREMENT_ID, {
-        page_path: pagePath,
-        page_title: document.title,
-        page_location: window.location.href
-    });
-
-    window.gtag('event', 'page_view', {
-        page_title: document.title,
-        page_location: window.location.href,
-        page_path: pagePath,
-        page_name: pageName
-    });
-}
 
 function initBirthdayCelebration() {
     if (!SHOW_BIRTHDAY_ANNIVERSARY_ANIMATION) return;
@@ -72,6 +41,106 @@ function initBirthdayCelebration() {
     container.appendChild(confettiLayer);
     container.dataset.initialized = 'true';
 }
+
+function trackAnalyticsEvent(eventName, params = {}, options = {}) {
+    if (typeof window.gtag !== 'function') return;
+
+    window.gtag('event', eventName, {
+        event_category: 'engagement',
+        page_location: window.location.href,
+        page_title: document.title,
+        ...params
+    }, options);
+}
+
+function trackPageView(pageId = 'home') {
+    const pageTitles = {
+        home: 'UniquelyUs | Home',
+        courses: 'UniquelyUs | Courses',
+        gallery: 'UniquelyUs | Gallery',
+        testimonials: 'UniquelyUs | Testimonials',
+        about: 'UniquelyUs | About',
+        contact: 'UniquelyUs | Contact'
+    };
+
+    if (typeof window.gtag !== 'function') return;
+
+    window.gtag('event', 'page_view', {
+        page_location: window.location.href,
+        page_path: `${window.location.pathname}${window.location.hash}`,
+        page_title: pageTitles[pageId] || document.title
+    });
+}
+
+function initAnalyticsTracking() {
+    const toggle = document.querySelector('.mobile-nav-toggle');
+    const nav = document.querySelector('header nav');
+
+    if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', String(isOpen));
+            trackAnalyticsEvent('mobile_nav_toggle', { state: isOpen ? 'open' : 'closed' });
+        });
+
+        nav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+                trackAnalyticsEvent('navigation_click', {
+                    link_text: link.textContent.trim(),
+                    link_target: link.getAttribute('href') || ''
+                });
+            });
+        });
+    }
+
+    document.querySelectorAll('.cta-button').forEach(button => {
+        button.addEventListener('click', () => {
+            trackAnalyticsEvent('hero_cta_click', { button_text: button.textContent.trim() });
+        });
+    });
+
+    document.querySelectorAll('.qa-item summary').forEach(summary => {
+        summary.addEventListener('click', () => {
+            trackAnalyticsEvent('faq_toggle', { question: summary.textContent.trim() });
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        const enrollButton = event.target.closest('.enroll-btn');
+        if (enrollButton) {
+            const courseCard = enrollButton.closest('.course-card');
+            const courseTitle = courseCard?.querySelector('h3')?.textContent.trim() || 'Unknown course';
+            trackAnalyticsEvent('course_enroll_click', { course_title: courseTitle });
+        }
+
+        const galleryImage = event.target.closest('.gallery-item img');
+        if (galleryImage) {
+            trackAnalyticsEvent('gallery_image_open', {
+                image_name: galleryImage.getAttribute('src').split('/').pop() || 'unknown'
+            });
+        }
+    });
+
+    const loadMoreButton = document.getElementById('load-more-gallery');
+    if (loadMoreButton) {
+        loadMoreButton.addEventListener('click', () => {
+            trackAnalyticsEvent('gallery_load_more', { image_count: galleryState.currentIndex + galleryState.batchSize });
+        });
+    }
+
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', () => {
+            trackAnalyticsEvent('contact_form_submit', { form_id: contactForm.id }, { transport: 'beacon' });
+        });
+    }
+}
+
+window.enrollCourse = function (courseTitle) {
+    trackAnalyticsEvent('course_enroll_click', { course_title: courseTitle, method: 'fallback' });
+};
 
 class Router {
     constructor() {
@@ -138,24 +207,6 @@ class Router {
     async loadCourses() {
         const coursesGrid = document.getElementById('courses-grid');
         if (!coursesGrid) return;
-
-        if (!coursesGrid.dataset.analyticsBound) {
-            coursesGrid.addEventListener('click', (event) => {
-                const button = event.target.closest('.enroll-btn');
-                if (!button) return;
-
-                const courseCard = button.closest('.course-card');
-                const courseTitle = courseCard?.querySelector('h3')?.textContent.trim() || 'Unknown course';
-                const buttonLabel = button.textContent.trim();
-
-                trackAnalyticsEvent('course_cta_click', {
-                    action: buttonLabel,
-                    course_title: courseTitle,
-                    page_name: 'courses'
-                });
-            });
-            coursesGrid.dataset.analyticsBound = 'true';
-        }
 
         const getIconClass = (title) => 'fa-solid fa-hashtag';
 
@@ -235,6 +286,8 @@ class Router {
                         </div>
                     </div>`;
             }).join('');
+
+            trackAnalyticsEvent('courses_loaded', { course_count: courses.length });
         } catch (error) {
             console.error('Unable to load courses from JSON:', error);
             coursesGrid.innerHTML = '<p class="course-error">Unable to load courses right now.</p>';
@@ -246,47 +299,7 @@ class Router {
 document.addEventListener('DOMContentLoaded', () => {
     new Router();
     initBirthdayCelebration();
-
-    const toggle = document.querySelector('.mobile-nav-toggle');
-    const nav = document.querySelector('header nav');
-
-    if (toggle && nav) {
-        toggle.addEventListener('click', () => {
-            const isOpen = nav.classList.toggle('open');
-            toggle.setAttribute('aria-expanded', String(isOpen));
-            trackAnalyticsEvent('mobile_nav_toggle', {
-                state: isOpen ? 'opened' : 'closed',
-                page_name: 'home'
-            });
-        });
-
-        nav.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('open');
-                toggle.setAttribute('aria-expanded', 'false');
-
-                const targetPage = (link.getAttribute('href') || '').replace('#', '') || 'home';
-                trackAnalyticsEvent('navigation_click', {
-                    link_text: link.textContent.trim(),
-                    page_name: targetPage
-                });
-            });
-        });
-    }
-
-    const heroCta = document.querySelector('.hero .cta-button');
-    heroCta?.addEventListener('click', () => {
-        trackAnalyticsEvent('hero_cta_click', {
-            page_name: 'home'
-        });
-    });
-
-    const contactForm = document.getElementById('contact-form');
-    contactForm?.addEventListener('submit', () => {
-        trackAnalyticsEvent('contact_form_submit', {
-            page_name: 'contact'
-        });
-    });
+    initAnalyticsTracking();
 });
 
 
@@ -367,9 +380,6 @@ Router.prototype.loadGallery = function () {
         const loadMoreButton = document.getElementById('load-more-gallery');
         loadMoreButton.addEventListener('click', () => {
             appendGalleryBatch(grid, loadMoreButton);
-            trackAnalyticsEvent('gallery_load_more_click', {
-                page_name: 'gallery'
-            });
         });
 
         if (!document.getElementById('gallery-modal')) {
@@ -394,16 +404,8 @@ Router.prototype.loadGallery = function () {
             grid.addEventListener('click', (e) => {
                 const img = e.target.closest('img');
                 if (!img) return;
-
                 const modal = document.getElementById('gallery-modal');
                 const modalImg = document.getElementById('gallery-modal-img');
-                const imageName = (img.getAttribute('src') || '').split('/').pop();
-
-                trackAnalyticsEvent('gallery_image_open', {
-                    image_name: imageName,
-                    page_name: 'gallery'
-                });
-
                 modalImg.src = img.dataset.src || img.src;
                 modal.classList.add('open');
             });
