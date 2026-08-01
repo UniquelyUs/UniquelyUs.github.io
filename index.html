@@ -1,161 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Oakshift Software — Coming Soon</title>
-        <meta name="description" content="Oakshift Software is launching this new website soon. Stay tuned for updates." />
-        <link rel="shortcut icon" href="https://oakshiftsoftware.github.io/source/images/logos/logo-b.png" type="image/png">
-        <style>
-            :root {
-                --font-family: 'Arial', sans-serif;
-                --primary-color: #363636;
-                --secondary-color: #18bc9c;
-                --background-color: #0d1118;
-                --surface-color: #141a24;
-                --text-color: #f4f5f7;
-                --muted-color: #9aa8b8;
-            }
-
-            * {
-                box-sizing: border-box;
-            }
-
-            body {
-                margin: 0;
-                min-height: 100vh;
-                font-family: var(--font-family);
-                background: radial-gradient(circle at top, rgba(24, 188, 156, 0.16), transparent 28%),
-                            radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.06), transparent 20%),
-                            var(--background-color);
-                color: var(--text-color);
-                display: grid;
-                place-items: center;
-                padding: 1.5rem;
-            }
-
-            .container {
-                width: min(100%, 680px);
-                background: rgba(21, 27, 36, 0.95);
-                border: 1px solid rgba(255, 255, 255, 0.06);
-                border-radius: 28px;
-                padding: 2rem;
-                box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
-                text-align: center;
-            }
-
-            .brand {
-                align-items: center;
-                margin-bottom: 1rem;
-            }
-
-            .brand-container {
-                display: inline-grid;
-            }
-
-            .brand img {
-                width: 100px;
-                height: auto;
-                object-fit: contain;
-            }
-
-            .hero-title {
-                font-size: clamp(2.25rem, 4vw, 3.5rem);
-                line-height: 1.03;
-                margin: 0 0 1rem;
-            }
-
-            .hero-copy {
-                font-size: 1.05rem;
-                line-height: 1.85;
-                color: var(--muted-color);
-                max-width: 520px;
-                margin: 0 auto 1rem;
-            }
-
-            .spotlight {
-                align-items: center;
-                text-align: center;
-                color: #d4fff3;
-                border-radius: 999px;
-                margin-bottom: 1rem;
-                font-weight: 700;
-                font-size: 0.95rem;
-            }
-
-            .actions {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-
-            .action-button {
-                border: none;
-                border-radius: 999px;
-                padding: 0.95rem 1.7rem;
-                font-size: 0.95rem;
-                font-weight: 700;
-                cursor: pointer;
-                transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-            }
-
-            .action-button.secondary {
-                background: rgba(255, 255, 255, 0.08);
-                color: var(--text-color);
-                border: 1px solid rgba(255, 255, 255, 0.12);
-            }
-
-            .action-button:hover {
-                transform: translateY(-1px);
-            }
-
-            .footer-note {
-                margin-top: 1rem;
-                color: var(--muted-color);
-                font-size: 0.94rem;
-                margin-bottom: 0;
-            }
-
-            .footer-note a {
-                color: var(--secondary-color);
-                text-decoration: none;
-            }
-
-            @media (max-width: 620px) {
-                .container {
-                    padding: 2rem 1.5rem;
-                }
-
-                .hero-title {
-                    font-size: 2.2rem;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="brand-container">
-                <div class="brand">
-                    <img src="https://oakshift.co.uk/source/images/logos/logo-b.png" alt="Oakshift Software logo" />
-                </div>
-                <h1 class="hero-title">Coming Soon</h1>
-                <div class="spotlight">Uniquely Us</div>
-            </div>
-
-            <p class="hero-copy">This page is a temporary holding page for our upcoming Oakshift release. We’re polishing the experience and will be back with a fresh product soon.</p>
-
-            <div class="actions">
-                <button class="action-button secondary" onclick="openHome()">Visit Oakshift</button>
-            </div>
-
-            <p class="footer-note">Need to reach us?<br>Email: <a href="mailto:oakshiftsoftware@gmail.com">oakshiftsoftware@gmail.com</a></p>
-        </div>
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8K8GSEZGLV"></script>
         <script>
-            function openHome() {
-                window.location.href = 'https://oakshift.co.uk';
-            }
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-8K8GSEZGLV');
         </script>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta property="og:title" content="Uniquely Us" />
+        <meta property="og:description" content="Uniquely Us offers creative craft classes in a welcoming environment." />
+
+        <meta property="twitter:title" content="Uniquely Us" />
+        <meta property="twitter:description" content="Uniquely Us offers creative craft classes in a welcoming environment." />
+
+        <link rel="stylesheet" href="source/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="shortcut icon" href="source/images/us-icon-01.png" type="image/png">
+        <title>UniquelyUs | Home</title>
+    </head>
+
+    <body>
+        <header>
+            <div class="header-container">
+                <a href="#" class="logo"><img src="source/images/us-logo-01.png" alt="Uniquely Us Logo"></a>
+                <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="#" class="nav-link active">Home</a></li>
+                        <li><a href="#courses" class="nav-link">Courses</a></li>
+                        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div id="home" class="page active">
+                <section class="hero">
+                    <div id="birthday-celebration-root" class="birthday-celebration-root" aria-hidden="true"></div>
+                    <h1>Unleash Your Creativity</h1>
+                    <p>Learn different crafts in an informal , friendly environment where you meet like-minded people.</p>
+                    <a href="#courses" class="cta-button">Explore Courses</a>
+                </section>
+
+                <div class="container">
+                    <h2 class="section-title">Why Choose Uniquely Us?</h2>
+                    <p class="section-subtitle">Join others on their creative journey</p>
+
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                            <h3>Craft Expert</h3>
+                            <p>Your craft instructor has over 30yrs experience in various crafts</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fa-solid fa-people-group"></i></div>
+                            <h3>Community Driven</h3>
+                            <p>Connect with other local people where friendships can be built</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                            <h3>Schedule</h3>
+                            <p>I run evening classes so everyone can attend</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fa-solid fa-award"></i></div>
+                            <h3>Certification</h3>
+                            <p>Earn a Uniquely Us course completion Certificate</p>
+                        </div>
+                    </div>
+
+                    <div class="qa-section">
+                        <h2 class="section-title">Frequently Asked Questions</h2>
+                        <p class="section-subtitle">Everything you need to know before joining one of our craft sessions</p>
+                        <div class="qa-list">
+                            <details class="qa-item" open>
+                                <summary>Are all your courses for beginners?</summary>
+                                <p>Yes, all courses are good for beginners and seasoned crafters. I will work at your skill level in every lesson. Even those who feel they can't craft will have fun.</p>
+                            </details>
+                            <details class="qa-item">
+                                <summary>Can I come on my own?</summary>
+                                <p>Yes of course you can, everyone is made to feel welcome and if you are anxious, let me know before hand and I'll do everything I can do to make you feel comfortable.</p>
+                            </details>
+                            <details class="qa-item">
+                                <summary>Can I bring my child?</summary>
+                                <p>Unfortunately these are courses for adults. 16-18 year olds can come if accompanied by another adult.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="courses" class="page">
+                <div class="hero hero-sub">
+                    <h1>Our Courses</h1>
+                    <p>Discover the perfect craft class for you</p>
+                </div>
+
+                <div class="container">
+                    <div class="courses-grid" id="courses-grid">
+                        <!-- Courses dynamically loaded here -->
+                    </div>
+                </div>
+
+                <div class="container" style="margin-top: 2rem;">
+                    <div class="contact-map-card">
+                        <h3>Course Certification</h3>
+                        <p>All courses come with a Uniquely Us course completion certificate.</p>
+                        <img src="source/images/uu_sample_cert.jpg" alt="Sample Course Completion Certificate" style="width: 100%;">
+                    </div>
+                </div>
+            </div>
+
+            <div id="gallery" class="page">
+                <div class="hero hero-sub">
+                    <h1>Gallery</h1>
+                    <p>Browse recent work from our students and instructors</p>
+                </div>
+
+                <div class="container">
+                    <div id="gallery-grid" class="gallery-grid">
+                        <!-- Gallery images are loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="testimonials" class="page">
+                <div class="hero hero-sub">
+                    <h1>Testimonials</h1>
+                    <p>What our students say about their experience</p>
+                </div>
+
+                <div class="container">
+                    <div class="testimonials">
+                        <div class="testimonial">
+                            <div class="testimonial-text">"I joined Gracie's group a few months ago, trying out the craft classes first. Each wk.k we tried out a different crafts ,   from painting stones that were coated in resin, to lace art. The classes are very laid back and have a great atmosphere. Gracie is a wonderful tutor and very artistic. I wanted to learn crochet so I'm now taking those classes. Being a knitter for years, its a craft I haven'tt been able to master alone, but with Gracie's help iI'm getting their. I highly recommend Gracie's classes, they are a wonderful weekly break from life ."</div>
+                            <div class="testimonial-author">Sheila</div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-text">"Gracie is a brilliant teacher and has introduced me to so many new techniques and crafts. Her passion for crafts is contagious, and she is a wonderful, patient teacher that makes everyone from total beginners to seasoned crafters feel confident and inspired. Gracie takes the time to guide each of us , offers brilliant tips, and creates such a warm , welcoming environment. I always leave the session with a project I'm genuinely proud of."</div>
+                            <div class="testimonial-author">Olivia</div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-text">"Absolutely best course I have ever been on, I literally cannot wait to get there. Ive been on 3 courses and the details and equipment that is put into organise this is unreal. Gracie is fantastic with everyone, she has the highest patience I have ever known and is so lovely and caring. Made some great stuff here for Xmas and birthdays. Best craft club 100%. Thank you Gracie for all your hard work you put into these groups and for saving my mental health when I was at my lowest."</div>
+                            <div class="testimonial-author">Lisa</div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-text">"I joined the crochet class just before Christmas and was made to feel so welcome. Gracie is so kind and patient and the classes are always so friendly and chatty. I'm slowly learning how to crochet and enjoying the company too."</div>
+                            <div class="testimonial-author">Ann-marie</div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-text">"I had a wonderful time doing a 6 wk. course with Gracie. It was great to get hands on with crafts and projects I would never thought to try before. Gracie is very patient and explains everything really well. You are able to work at your own pace/skill level during the classes. II highly recommend booking on for anyone looking for something fun and relaxing to do. I will definitely be booking on again in the future. Thank you for your hard work Gracie."</div>
+                            <div class="testimonial-author">Maryam</div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-text">"Uniquely Us has fantastic and the best craft classes on offer. The tutor Gracie is super adept at a variety of arts and crafts and explains how to do these calmly, simply and with patience. I 100% recommend her crochet class if you can get a space. Thanks, Gracie."</div>
+                            <div class="testimonial-author">Karen</div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-text">"I've been doing the crochet courses since last September. I just love them. Tried a few times to learn to crochet and Gracie is so patient and so good I can now do stitches. I love it."</div>
+                            <div class="testimonial-author">Kathryn</div>
+                        </div>
+                        <div class="testimonial">
+                            <div class="testimonial-text">"Oh, I'm having amazing time on the 6wk craft course. Ive always crafted but there is always room for more knowledge and experience. II'm getting that. The three Christmas classes blew my mind. Amazing. Give all the classes a try. Warm friendly atmosphere and plenty to do and learn. Loving it. Value for money most definitely."</div>
+                            <div class="testimonial-author">Maria</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="about" class="page">
+                <div class="hero hero-sub">
+                    <h1>About Uniquely Us</h1>
+                    <p>Where passion meets skill</p>
+                </div>
+
+                <div class="container">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h2>Our Story</h2>
+                            <p>
+                                Uniquely Us was founded in 2025 . I was asked to run a craft course but I didn't expect it to be so popular, and I was genuinely shocked how popular it was. It was sold out so quickly and it took me a couple of weeks to get my head round it and I haven't looked back since.
+                            </p>
+                            <p>
+                                My first session was so nerve racking and I made a few mistakes in the first 20 minuets , but after that I found my flow and have found a love in teaching. Now teaching a group is very different to teaching 1 to 1 but I soon adapted and I thoughrly love sharing the skills I've learnt over so many years. At first, I didn't realise how many skills I actually had until it came to planning courses, And I'm still learning new skills so I'm able to bring those to the courses.
+                            </p>
+                            <p>
+                                Today, I normally have one crochet running back-to-back and two craft courses running back-to-back most of the time. I will throw in one- or two-week courses for specific things. I'm very flexible and try to offer what the majority of people would like to do, with a few twists and surprises of my own.
+                            </p>
+                            <p>
+                                I'm a firm believer that everyone has the ability to craft, even those who feel they have no imagination. it comes in time. It's more about enjoying what you're doing, leaving whatever has happened during the day at the door and having the space to chill , and join like-minded people, where we have a good chat, laugh in a safe environment.
+                            </p>
+                            <p>
+                                Joining a craft group is also a really good way of combatting loneliness in the community as well. It affects every age group, the young and elderly, men and women so it's also something I'm keen to help with.
+                            </p>
+                            <p>
+                                I believe that creating something with your hands is one of the most fulfilling experiences in life. Join me to discover the crafter within you.
+                            </p>
+                        </div>
+                        <div class="about-image">
+                            <img src="source/images/bday-poster.jpg" alt="Uniquely Us Birthday Poster" />
+                        </div>
+                    </div>
+
+                    <h2 class="section-title">Our Values</h2>
+                    <div class="features">
+                        <div class="feature">
+                            <h3>Inclusivity</h3>
+                            <p>We welcome all skill levels and backgrounds to participate</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Excellence</h3>
+                            <p>We maintain the highest standards of instruction and quality</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Sustainability</h3>
+                            <p>We utilise reusable materials and practices, to prevent waste</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contact" class="page">
+                <div class="hero hero-sub">
+                    <h1>Get In Touch</h1>
+                    <p>Please feel free to message me if you have any further questions regarding the courses.<br />If you'd like to hire my services to deliver a class or course at your venue, then please get in touch to discuss.</p>
+                </div>
+
+                <div class="container">
+                    <div class="contact-layout">
+                        <div class="contact-card">
+                            <h3 style="margin-bottom: 1rem;">Come and say hello</h3>
+                            <div class="contact-detail">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <strong>Address</strong>
+                                    <p>Bridgewater Foundation Community Hub, 40 Chilham Road, Walkden, Greater Manchester, M28 3DP</p>
+                                </div>
+                            </div>
+                            <div class="contact-detail">
+                                <i class="fa-solid fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p><a href="mailto:uniquelyuswalkden@hotmail.com">uniquelyuswalkden@hotmail.com</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-detail">
+                                <i class="fa-solid fa-phone"></i>
+                                <div>
+                                    <strong>Phone</strong>
+                                    <p><a href="tel:+447488373889">+44 7488 373889</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-detail">
+                                <i class="fa-brands fa-facebook-f"></i>
+                                <div>
+                                    <strong>Social</strong>
+                                    <p><a href="https://www.facebook.com/share/1D2kqDNMeY/" target="_blank" rel="noopener noreferrer">Follow along on Facebook</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-section">
+                            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                                <input type="hidden" name="access_key" value="498d8707-c492-4f01-b9e5-b5ec26565c5a">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea name="message" required></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="contact-map-card">
+                        <h3>Find us</h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2372.0761702423088!2d-2.3946986000000003!3d53.52069650000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487ba94ce8132c2f%3A0x741225b8c73012cb!2sWalkden%20Community%20Hub!5e0!3m2!1sen!2suk!4v1785568469994!5m2!1sen!2suk" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Uniquely Us. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://www.facebook.com/share/1D2kqDNMeY/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="mailto:uniquelyuswalkden@hotmail.com"><i class="fa-solid fa-envelope"></i></a>
+                <a href="tel:+447488373889"><i class="fa-solid fa-phone"></i></a>
+            </div>
+            <small><i>Website by <a href="https://oakshiftsoftware.github.io" target="_blank" rel="noopener noreferrer">Oakshift Software</a></i></small>
+        </footer>
+
+        <script src="source/main.js"></script>
     </body>
 </html>
