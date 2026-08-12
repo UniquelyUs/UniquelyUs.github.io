@@ -32,16 +32,16 @@
       "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-san6m-20260805183000"
     },
     {
-      "id": "023",
-      "title": "6wk Crochet course",
-      "description": "this crochet course is for beginners or if you need help understanding patterns etc.",
-      "weeks": 6,
-      "course_type": "crochet",
+      "id": "024",
+      "title": "Painting on Vinyl Records",
+      "description": "Try your hand at creating works of art on vinyl.  This will be a unique experience.",
+      "weeks": 0,
+      "course_type": "one-off",
       "full_course_spaces": 0,
-      "full_course_price": "30.00",
-      "single_session_spaces": 0,
-      "single_session_price": "0.00",
-      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sskfy-20260810183000"
+      "full_course_price": "0.00",
+      "single_session_spaces": 8,
+      "single_session_price": "15.00",
+      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-s1psb-20260825183000"
     },
     {
       "id": "Awaiting new class",
@@ -56,16 +56,16 @@
       "url": ""
     },
     {
-      "id": "024",
-      "title": "Painting on Vinyl Records",
-      "description": "Try your hand at creating works of art on vinyl.  This will be a unique experience.",
-      "weeks": 0,
-      "course_type": "one-off",
+      "id": "023",
+      "title": "6wk Crochet course",
+      "description": "this crochet course is for beginners or if you need help understanding patterns etc.",
+      "weeks": 6,
+      "course_type": "crochet",
       "full_course_spaces": 0,
-      "full_course_price": "0.00",
-      "single_session_spaces": 8,
-      "single_session_price": "15.00",
-      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-s1psb-20260825183000"
+      "full_course_price": "30.00",
+      "single_session_spaces": 0,
+      "single_session_price": "0.00",
+      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sskfy-20260810183000"
     }
   ]
 }
