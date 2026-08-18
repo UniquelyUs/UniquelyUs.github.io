@@ -238,9 +238,10 @@ class Router {
                 let pricingInfo = '';
                 let durationInfo = `<span>Duration: ${course.weeks} weeks</span><br>`;
                 let startDateInfo = course.start_date ? `<span>Start Date: ${course.start_date}</span><br>` : '';
-                let sessionInfo = course.session_day && course.session_times ? `<span>Session: ${course.session_day}'s from ${course.session_times}</span><br>` : '';
+                let sessionInfo = '';
 
                 if (course.course_type === 'crochet') {
+                    sessionInfo = course.session_day && course.session_times ? `<span>Schedule: ${course.session_day}'s from ${course.session_times}</span><br>` : '';
                     pricingInfo = `
                             <div class="course-meta">
                                 <span>Full Course Spaces: ${course.full_course_spaces}</span>
@@ -248,6 +249,7 @@ class Router {
                             </div>
                     `;
                 } else if (course.course_type === 'craft' || course.course_type === 'painting') {
+                    sessionInfo = course.session_day && course.session_times ? `<span>Schedule: ${course.session_day}'s from ${course.session_times}</span><br>` : '';
                     pricingInfo = `
                             <div class="course-meta">
                                 <span>Full Course Spaces: ${course.full_course_spaces}</span>
@@ -260,6 +262,7 @@ class Router {
                     `;
                 } else if (course.course_type === 'one-off') {
                     durationInfo = "";
+                    sessionInfo = course.session_day && course.session_times ? `<span>Schedule: ${course.session_day} from ${course.session_times}</span><br>` : '';
                     pricingInfo = `
                             <div class="course-meta">
                                 <span>Single Session Spaces: ${course.single_session_spaces}</span>
