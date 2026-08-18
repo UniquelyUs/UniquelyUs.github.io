@@ -236,7 +236,7 @@ class Router {
                 }
 
                 let pricingInfo = '';
-                let durationInfo = `<span>Duration: ${course.weeks} weeks</span><br><br>`;
+                let durationInfo = `<span>Duration: ${course.weeks} weeks</span><br>`;
                 let startDateInfo = course.start_date ? `<span>Start Date: ${course.start_date}</span><br>` : '';
                 let sessionInfo = course.session_day && course.session_times ? `<span>Session: ${course.session_day}'s from ${course.session_times}</span><br>` : '';
 
@@ -259,7 +259,7 @@ class Router {
                             </div>
                     `;
                 } else if (course.course_type === 'one-off') {
-                    durationInfo = "<br>";
+                    durationInfo = "";
                     pricingInfo = `
                             <div class="course-meta">
                                 <span>Single Session Spaces: ${course.single_session_spaces}</span>
@@ -283,6 +283,7 @@ class Router {
                                 ${durationInfo}
                                 ${startDateInfo}
                                 ${sessionInfo}
+                                <br>
                                 <i>${course.description || 'No description available.'}</i>
                             </p>
                             ${pricingInfo}
