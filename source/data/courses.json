@@ -12,7 +12,7 @@
         "course_type": "string",
         "start_date": "string",
         "session_day": "string",
-        "session_time": "string",
+        "session_times": "string",
         "full_course_spaces": "number",
         "full_course_price": "string",
         "single_session_spaces": "number",
