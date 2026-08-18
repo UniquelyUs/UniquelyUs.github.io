@@ -237,6 +237,8 @@ class Router {
 
                 let pricingInfo = '';
                 let durationInfo = `<span>Duration: ${course.weeks} weeks</span><br><br>`;
+                let startDateInfo = course.start_date ? `<span>Start Date: ${course.start_date}</span><br>` : '';
+                let sessionInfo = course.session_day && course.session_times ? `<span>Session: ${course.session_day}'s from ${course.session_times}</span><br>` : '';
 
                 if (course.course_type === 'crochet') {
                     pricingInfo = `
@@ -279,6 +281,8 @@ class Router {
                             <p class="course-description">
                                 ID: ${course.id}<br>
                                 ${durationInfo}
+                                ${startDateInfo}
+                                ${sessionInfo}
                                 <i>${course.description || 'No description available.'}</i>
                             </p>
                             ${pricingInfo}
