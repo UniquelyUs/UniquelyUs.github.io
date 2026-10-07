@@ -23,6 +23,21 @@
   },
   "courses": [
     {
+      "id": "028",
+      "title": "6wk Craft course",
+      "description": "join me for a 6wk craft course where we will do 3 wks of halloween crafts and 3 wks of christmas crafts",
+      "weeks": 6,
+      "course_type": "craft",
+      "start_date": "13th October",
+      "session_day": "Tuesday",
+      "session_times": "6:30pm - 8:30pm",
+      "full_course_spaces": 7,
+      "full_course_price": "32.50",
+      "single_session_spaces": 6,
+      "single_session_price": "7.50",
+      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sdb6i-20261013183000"
+    },
+    {
       "id": "026",
       "title": "6wk Crochet course",
       "description": "if you want to learn crochet or need extra help then try this course.",
@@ -38,49 +53,34 @@
       "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sjelj-20260921183000"
     },
     {
-      "id": "025  ",
-      "title": "6wk Painting course",
-      "description": "join me at trying out different paints, Pastels & glass paints etc. Each week will be something different to try and have something to take home,",
-      "weeks": 6,
-      "course_type": "craft",
-      "start_date": "1st September 2026",
-      "session_day": "Tuesday",
-      "session_times": "6:30pm - 8:30pm",
-      "full_course_spaces": 1,
-      "full_course_price": "32.50",
-      "single_session_spaces": 6,
-      "single_session_price": "7.50",
-      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-s8hm0-20260901183000"
-    },
-    {
-      "id": "022",
-      "title": "6wk Craft Course",
-      "description": "you will try different crafts & learn new skills. The list of what's on the course is on the booking form.",
-      "weeks": 6,
-      "course_type": "craft",
-      "start_date": "26th August 2026",
-      "session_day": "Wednesday",
-      "session_times": "6:30pm - 8:30pm",
-      "full_course_spaces": 6,
-      "full_course_price": "32.50",
-      "single_session_spaces": 5,
-      "single_session_price": "7.50",
-      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-san6m-20260805183000"
-    },
-    {
-      "id": "023",
-      "title": "6wk Crochet course",
-      "description": "this crochet course is for beginners or if you need help understanding patterns etc.",
-      "weeks": 6,
-      "course_type": "crochet",
-      "start_date": "10th August 2026",
-      "session_day": "Monday",
-      "session_times": "6:30pm - 8:30pm",
+      "id": "",
+      "title": "",
+      "description": "",
+      "weeks": 0,
+      "course_type": "",
+      "start_date": "",
+      "session_day": "",
+      "session_times": "",
       "full_course_spaces": 0,
-      "full_course_price": "30.00",
+      "full_course_price": "",
+      "single_session_spaces": 0,
+      "single_session_price": "",
+      "url": ""
+    },
+    {
+      "id": "",
+      "title": "",
+      "description": "",
+      "weeks": 0,
+      "course_type": "",
+      "start_date": "",
+      "session_day": "",
+      "session_times": "",
+      "full_course_spaces": 0,
+      "full_course_price": "",
       "single_session_spaces": 0,
       "single_session_price": "0.00",
-      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sskfy-20260810183000"
+      "url": ""
     }
   ]
 }
