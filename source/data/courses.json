@@ -23,6 +23,36 @@
   },
   "courses": [
     {
+      "id": "030",
+      "title": "7wk Crochet course",
+      "description": "if you want to learn crochet or need extra help then try this course.",
+      "weeks": 7,
+      "course_type": "crochet",
+      "start_date": "2nd November",
+      "session_day": "Monday",
+      "session_times": "6:30pm - 8:30pm",
+      "full_course_spaces": 5,
+      "full_course_price": "35.00",
+      "single_session_spaces": 0,
+      "single_session_price": "0",
+      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sjelj-20260921183000"
+    },
+    {
+      "id": "029",
+      "title": "6wk  Christmas craft course",
+      "description": "Last course of the year. A 6wk Christmas course full of different lessons. ",
+      "weeks": 6,
+      "course_type": "craft",
+      "start_date": "11th November",
+      "session_day": "wednesday",
+      "session_times": "6.30pm - 8.30pm",
+      "full_course_spaces": 12,
+      "full_course_price": "45.00",
+      "single_session_spaces": 6,
+      "single_session_price": "11.00",
+      "url": "https://uniquelyuswalkden.bookwhen.com/schedules/egfyb0cla94i#"
+    },
+    {
       "id": "028",
       "title": "6wk Craft course",
       "description": "join me for a 6wk craft course where we will do 3 wks of halloween crafts and 3 wks of christmas crafts",
@@ -36,36 +66,6 @@
       "single_session_spaces": 6,
       "single_session_price": "7.50",
       "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sdb6i-20261013183000"
-    },
-    {
-      "id": "026",
-      "title": "6wk Crochet course",
-      "description": "if you want to learn crochet or need extra help then try this course.",
-      "weeks": 6,
-      "course_type": "crochet",
-      "start_date": "21st September",
-      "session_day": "Monday",
-      "session_times": "6:30pm - 8:30pm",
-      "full_course_spaces": 0,
-      "full_course_price": "30.00",
-      "single_session_spaces": 0,
-      "single_session_price": "0",
-      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sjelj-20260921183000"
-    },
-    {
-      "id": "",
-      "title": "",
-      "description": "",
-      "weeks": 0,
-      "course_type": "",
-      "start_date": "",
-      "session_day": "",
-      "session_times": "",
-      "full_course_spaces": 0,
-      "full_course_price": "",
-      "single_session_spaces": 0,
-      "single_session_price": "",
-      "url": ""
     },
     {
       "id": "",
