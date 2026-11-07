@@ -23,21 +23,6 @@
   },
   "courses": [
     {
-      "id": "030",
-      "title": "7wk Crochet course",
-      "description": "if you want to learn crochet or need extra help then try this course.",
-      "weeks": 7,
-      "course_type": "crochet",
-      "start_date": "2nd November",
-      "session_day": "Monday",
-      "session_times": "6:30pm - 8:30pm",
-      "full_course_spaces": 5,
-      "full_course_price": "35.00",
-      "single_session_spaces": 0,
-      "single_session_price": "0",
-      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sjelj-20260921183000"
-    },
-    {
       "id": "029",
       "title": "6wk  Christmas craft course",
       "description": "Last course of the year. A 6wk Christmas course full of different lessons. ",
@@ -46,7 +31,7 @@
       "start_date": "11th November",
       "session_day": "wednesday",
       "session_times": "6.30pm - 8.30pm",
-      "full_course_spaces": 12,
+      "full_course_spaces": 5,
       "full_course_price": "45.00",
       "single_session_spaces": 6,
       "single_session_price": "11.00",
@@ -68,19 +53,49 @@
       "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sdb6i-20261013183000"
     },
     {
-      "id": "",
-      "title": "",
-      "description": "",
-      "weeks": 0,
-      "course_type": "",
-      "start_date": "",
-      "session_day": "",
-      "session_times": "",
-      "full_course_spaces": 0,
-      "full_course_price": "",
+      "id": "032",
+      "title": "Wreath making",
+      "description": "This one off Wreath making class, Using tinsel or make a wrag wreath. everything supplied",
+      "weeks": 1,
+      "course_type": "craft",
+      "start_date": "1st December",
+      "session_day": "Tuesday",
+      "session_times": "6.30pm -8.30pm",
+      "full_course_spaces": 12,
+      "full_course_price": "30.00",
       "single_session_spaces": 0,
       "single_session_price": "0.00",
-      "url": ""
+      "url": "https://uniquelyuswalkden.bookwhen.com/schedules/egfyb0cla94i#"
+    },
+    {
+      "id": "031",
+      "title": "Make a Christmas Pudding",
+      "description": "Come join me to make a malteser choc orange Christmas Pudding. This will be displayed in a lovely clear box to gift / protect & take home. All you need to buy & bring is a choc orange of your choice, and a large box of maltesers. Everything else will be supplied & demonstrated",
+      "weeks": 1,
+      "course_type": "craft",
+      "start_date": "8th December",
+      "session_day": "Tuesday",
+      "session_times": "6.30pm - 8.30pm",
+      "full_course_spaces": 12,
+      "full_course_price": "18.00",
+      "single_session_spaces": 0,
+      "single_session_price": "",
+      "url": "https://uniquelyuswalkden.bookwhen.com/schedules/egfyb0cla94i#"
+    },
+    {
+      "id": "030",
+      "title": "7wk Crochet course",
+      "description": "if you want to learn crochet or need extra help then try this course.",
+      "weeks": 7,
+      "course_type": "crochet",
+      "start_date": "2nd November",
+      "session_day": "Monday",
+      "session_times": "6:30pm - 8:30pm",
+      "full_course_spaces": 0,
+      "full_course_price": "35.00",
+      "single_session_spaces": 0,
+      "single_session_price": "0",
+      "url": "https://bookwhen.com/uniquelyuswalkden/e/ev-sjelj-20260921183000"
     }
   ]
 }
